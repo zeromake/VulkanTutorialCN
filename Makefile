@@ -7,7 +7,7 @@ dist: md
 	mv dist/html/* docs
 pdf: md
 	cp -r img build/
-	pandoc -s build/Vulkan编程指南.md -o docs/Vulkan编程指南.pdf --pdf-engine=xelatex -V CJKmainfont=KaiTi
+	pandoc -s build/Vulkan编程指南.md -o docs/Vulkan编程指南.pdf --pdf-engine=xelatex -V CJKmainfont=KaiTi -V geometry:"top=2.5cm, bottom=2.5cm, left=2.5cm, right=2.5cm"
 md:
 	mkdir -p build
 	mkdir -p src
