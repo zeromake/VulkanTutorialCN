@@ -1,5 +1,5 @@
 dist: md
-	rm -rf dist
+	rm -rf dist docs
 	cp -r img src/
 	mkdir -p docs
 	mdbook build
