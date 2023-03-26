@@ -1,13 +1,13 @@
 dist: md
 	rm -rf dist
 	cp -r img src/
+	mkdir -p docs
 	mdbook build
-	mv dist/epub/*.epub dist/
-	mv dist/html/* dist
-	rm -rf dist/epub dist/html
+	mv dist/epub/*.epub docs/
+	mv dist/html/* docs
 pdf: md
 	cp -r img build/
-	pandoc -s build/Vulkan编程指南.md -o dist/Vulkan编程指南.pdf --pdf-engine=xelatex -V CJKmainfont=KaiTi
+	pandoc -s build/Vulkan编程指南.md -o docs/Vulkan编程指南.pdf --pdf-engine=xelatex -V CJKmainfont=KaiTi
 md:
 	mkdir -p build
 	mkdir -p src

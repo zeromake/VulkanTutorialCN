@@ -242,3 +242,4 @@ TSWLatexianTemp*
 *.spl
 /build
 /src
+/dist
