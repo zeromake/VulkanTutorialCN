@@ -1,0 +1,18 @@
+[book]
+title = "Vulkan编程指南"
+authors = ["Alexander Overvoorde"]
+description = "本书主要介绍了Vulkan的图形和计算API。"
+language = "cn"
+
+[rust]
+edition = "2018"
+
+[build]
+build-dir = "dist"
+create-missing = false
+src = "build"
+
+[output.html]
+
+[output.epub]
+cover-image = "img/cover.png"
