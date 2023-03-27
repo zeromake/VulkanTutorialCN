@@ -18,9 +18,9 @@ function main(...)
 					out:close()
 					out = nil
 				end
-				local title = n..string.sub(line, 3):trim()
+				local title = string.sub(line, 3):trim()
+				local ch = n.."-"..title..".md"
 				n = n + 1
-				local ch = title..".md"
 				if is_top then
 					toc:write(string.format("- [%s](%s)\n", title, ch))
 				else

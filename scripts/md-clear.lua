@@ -20,6 +20,7 @@ function main(...)
 			out:write("\n")
 		end
 		out:close()
-		os.mv(output, input)
+		local sw = io.readfile(output):gsub('(%w+)\n=\n(%w+)', "%1=%2")
+		io.writefile(input, sw)
 	end
 end

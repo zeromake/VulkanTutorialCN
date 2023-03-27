@@ -1,0 +1,248 @@
+<!DOCTYPE HTML>
+<html lang="cn" class="sidebar-visible no-js light">
+    <head>
+        <!-- Book generated using mdBook -->
+        <meta charset="UTF-8">
+        <title>创建图像 - Vulkan编程指南</title>
+
+
+        <!-- Custom HTML head -->
+        
+        <meta name="description" content="本书主要介绍了Vulkan的图形和计算API。">
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+        <meta name="theme-color" content="#ffffff" />
+
+        <link rel="icon" href="favicon.svg">
+        <link rel="shortcut icon" href="favicon.png">
+        <link rel="stylesheet" href="css/variables.css">
+        <link rel="stylesheet" href="css/general.css">
+        <link rel="stylesheet" href="css/chrome.css">
+        <link rel="stylesheet" href="css/print.css" media="print">
+
+        <!-- Fonts -->
+        <link rel="stylesheet" href="FontAwesome/css/font-awesome.css">
+        <link rel="stylesheet" href="fonts/fonts.css">
+
+        <!-- Highlight.js Stylesheets -->
+        <link rel="stylesheet" href="highlight.css">
+        <link rel="stylesheet" href="tomorrow-night.css">
+        <link rel="stylesheet" href="ayu-highlight.css">
+
+        <!-- Custom theme stylesheets -->
+
+    </head>
+    <body>
+    <div id="body-container">
+        <!-- Provide site root to javascript -->
+        <script>
+            var path_to_root = "";
+            var default_theme = window.matchMedia("(prefers-color-scheme: dark)").matches ? "navy" : "light";
+        </script>
+
+        <!-- Work around some values being stored in localStorage wrapped in quotes -->
+        <script>
+            try {
+                var theme = localStorage.getItem('mdbook-theme');
+                var sidebar = localStorage.getItem('mdbook-sidebar');
+
+                if (theme.startsWith('"') && theme.endsWith('"')) {
+                    localStorage.setItem('mdbook-theme', theme.slice(1, theme.length - 1));
+                }
+
+                if (sidebar.startsWith('"') && sidebar.endsWith('"')) {
+                    localStorage.setItem('mdbook-sidebar', sidebar.slice(1, sidebar.length - 1));
+                }
+            } catch (e) { }
+        </script>
+
+        <!-- Set the theme before any content is loaded, prevents flash -->
+        <script>
+            var theme;
+            try { theme = localStorage.getItem('mdbook-theme'); } catch(e) { }
+            if (theme === null || theme === undefined) { theme = default_theme; }
+            var html = document.querySelector('html');
+            html.classList.remove('no-js')
+            html.classList.remove('light')
+            html.classList.add(theme);
+            html.classList.add('js');
+        </script>
+
+        <!-- Hide / unhide sidebar before it is displayed -->
+        <script>
+            var html = document.querySelector('html');
+            var sidebar = null;
+            if (document.body.clientWidth >= 1080) {
+                try { sidebar = localStorage.getItem('mdbook-sidebar'); } catch(e) { }
+                sidebar = sidebar || 'visible';
+            } else {
+                sidebar = 'hidden';
+            }
+            html.classList.remove('sidebar-visible');
+            html.classList.add("sidebar-" + sidebar);
+        </script>
+
+        <nav id="sidebar" class="sidebar" aria-label="Table of contents">
+            <div class="sidebar-scrollbox">
+                <ol class="chapter"><li class="chapter-item expanded "><a href="0-序.html"><strong aria-hidden="true">1.</strong> 序</a></li><li class="chapter-item expanded "><a href="1-前言.html"><strong aria-hidden="true">2.</strong> 前言</a></li><li><ol class="section"><li class="chapter-item expanded "><a href="2-关于本书.html"><strong aria-hidden="true">2.1.</strong> 关于本书</a></li><li class="chapter-item expanded "><a href="3-电子书.html"><strong aria-hidden="true">2.2.</strong> 电子书</a></li><li class="chapter-item expanded "><a href="4-教程结构.html"><strong aria-hidden="true">2.3.</strong> 教程结构</a></li></ol></li><li class="chapter-item expanded "><a href="5-概述.html"><strong aria-hidden="true">3.</strong> 概述</a></li><li><ol class="section"><li class="chapter-item expanded "><a href="6-Vulkan起源.html"><strong aria-hidden="true">3.1.</strong> Vulkan起源</a></li><li class="chapter-item expanded "><a href="7-画一个三角形.html"><strong aria-hidden="true">3.2.</strong> 画一个三角形</a></li><li class="chapter-item expanded "><a href="8-总结.html"><strong aria-hidden="true">3.3.</strong> 总结</a></li><li class="chapter-item expanded "><a href="9-API概念.html"><strong aria-hidden="true">3.4.</strong> API概念</a></li><li class="chapter-item expanded "><a href="10-校验层.html"><strong aria-hidden="true">3.5.</strong> 校验层</a></li></ol></li><li class="chapter-item expanded "><a href="11-开发环境.html"><strong aria-hidden="true">4.</strong> 开发环境</a></li><li><ol class="section"><li class="chapter-item expanded "><a href="12-Windows.html"><strong aria-hidden="true">4.1.</strong> Windows</a></li><li class="chapter-item expanded "><a href="13-Linux.html"><strong aria-hidden="true">4.2.</strong> Linux</a></li><li class="chapter-item expanded "><a href="14-MacOS.html"><strong aria-hidden="true">4.3.</strong> MacOS</a></li></ol></li><li class="chapter-item expanded "><a href="15-基础代码.html"><strong aria-hidden="true">5.</strong> 基础代码</a></li><li><ol class="section"><li class="chapter-item expanded "><a href="16-一般结构.html"><strong aria-hidden="true">5.1.</strong> 一般结构</a></li><li class="chapter-item expanded "><a href="17-资源管理.html"><strong aria-hidden="true">5.2.</strong> 资源管理</a></li><li class="chapter-item expanded "><a href="18-和GLFW交互.html"><strong aria-hidden="true">5.3.</strong> 和GLFW交互</a></li></ol></li><li class="chapter-item expanded "><a href="19-实例.html"><strong aria-hidden="true">6.</strong> 实例</a></li><li><ol class="section"><li class="chapter-item expanded "><a href="20-创建一个实例.html"><strong aria-hidden="true">6.1.</strong> 创建一个实例</a></li><li class="chapter-item expanded "><a href="21-检测扩展支持.html"><strong aria-hidden="true">6.2.</strong> 检测扩展支持</a></li><li class="chapter-item expanded "><a href="22-清理.html"><strong aria-hidden="true">6.3.</strong> 清理</a></li></ol></li><li class="chapter-item expanded "><a href="23-校验层.html"><strong aria-hidden="true">7.</strong> 校验层</a></li><li><ol class="section"><li class="chapter-item expanded "><a href="24-校验层是什么？.html"><strong aria-hidden="true">7.1.</strong> 校验层是什么？</a></li><li class="chapter-item expanded "><a href="25-使用校验层.html"><strong aria-hidden="true">7.2.</strong> 使用校验层</a></li><li class="chapter-item expanded "><a href="26-消息回调.html"><strong aria-hidden="true">7.3.</strong> 消息回调</a></li><li class="chapter-item expanded "><a href="27-配置.html"><strong aria-hidden="true">7.4.</strong> 配置</a></li></ol></li><li class="chapter-item expanded "><a href="28-物理设备和队列族.html"><strong aria-hidden="true">8.</strong> 物理设备和队列族</a></li><li><ol class="section"><li class="chapter-item expanded "><a href="29-选择一个物理设备.html"><strong aria-hidden="true">8.1.</strong> 选择一个物理设备</a></li><li class="chapter-item expanded "><a href="30-设备需求检测.html"><strong aria-hidden="true">8.2.</strong> 设备需求检测</a></li><li class="chapter-item expanded "><a href="31-队列族.html"><strong aria-hidden="true">8.3.</strong> 队列族</a></li></ol></li><li class="chapter-item expanded "><a href="32-逻辑设备和队列.html"><strong aria-hidden="true">9.</strong> 逻辑设备和队列</a></li><li><ol class="section"><li class="chapter-item expanded "><a href="33-介绍.html"><strong aria-hidden="true">9.1.</strong> 介绍</a></li><li class="chapter-item expanded "><a href="34-指定要创建的队列.html"><strong aria-hidden="true">9.2.</strong> 指定要创建的队列</a></li><li class="chapter-item expanded "><a href="35-指定使用的设备特性.html"><strong aria-hidden="true">9.3.</strong> 指定使用的设备特性</a></li><li class="chapter-item expanded "><a href="36-创建逻辑设备.html"><strong aria-hidden="true">9.4.</strong> 创建逻辑设备</a></li><li class="chapter-item expanded "><a href="37-获取队列句柄.html"><strong aria-hidden="true">9.5.</strong> 获取队列句柄</a></li></ol></li><li class="chapter-item expanded "><a href="38-窗口表面.html"><strong aria-hidden="true">10.</strong> 窗口表面</a></li><li><ol class="section"><li class="chapter-item expanded "><a href="39-创建窗口表面.html"><strong aria-hidden="true">10.1.</strong> 创建窗口表面</a></li><li class="chapter-item expanded "><a href="40-查询呈现支持.html"><strong aria-hidden="true">10.2.</strong> 查询呈现支持</a></li><li class="chapter-item expanded "><a href="41-创建呈现队列.html"><strong aria-hidden="true">10.3.</strong> 创建呈现队列</a></li></ol></li><li class="chapter-item expanded "><a href="42-交换链.html"><strong aria-hidden="true">11.</strong> 交换链</a></li><li><ol class="section"><li class="chapter-item expanded "><a href="43-检测交换链支持.html"><strong aria-hidden="true">11.1.</strong> 检测交换链支持</a></li><li class="chapter-item expanded "><a href="44-查询交换链支持细节.html"><strong aria-hidden="true">11.2.</strong> 查询交换链支持细节</a></li><li class="chapter-item expanded "><a href="45-为交换链选择合适的设置.html"><strong aria-hidden="true">11.3.</strong> 为交换链选择合适的设置</a></li><li class="chapter-item expanded "><a href="46-表面格式.html"><strong aria-hidden="true">11.4.</strong> 表面格式</a></li><li class="chapter-item expanded "><a href="47-呈现模式.html"><strong aria-hidden="true">11.5.</strong> 呈现模式</a></li><li class="chapter-item expanded "><a href="48-交换范围.html"><strong aria-hidden="true">11.6.</strong> 交换范围</a></li><li class="chapter-item expanded "><a href="49-创建交换链.html"><strong aria-hidden="true">11.7.</strong> 创建交换链</a></li><li class="chapter-item expanded "><a href="50-获取交换链图像.html"><strong aria-hidden="true">11.8.</strong> 获取交换链图像</a></li></ol></li><li class="chapter-item expanded "><a href="51-图像视图.html"><strong aria-hidden="true">12.</strong> 图像视图</a></li><li class="chapter-item expanded "><a href="52-图形管线概述.html"><strong aria-hidden="true">13.</strong> 图形管线概述</a></li><li class="chapter-item expanded "><a href="53-着色器模块.html"><strong aria-hidden="true">14.</strong> 着色器模块</a></li><li><ol class="section"><li class="chapter-item expanded "><a href="54-顶点着色器.html"><strong aria-hidden="true">14.1.</strong> 顶点着色器</a></li><li class="chapter-item expanded "><a href="55-片段着色器.html"><strong aria-hidden="true">14.2.</strong> 片段着色器</a></li><li class="chapter-item expanded "><a href="56-逐顶点着色.html"><strong aria-hidden="true">14.3.</strong> 逐顶点着色</a></li><li class="chapter-item expanded "><a href="57-编译着色器.html"><strong aria-hidden="true">14.4.</strong> 编译着色器</a></li><li class="chapter-item expanded "><a href="58-载入着色器.html"><strong aria-hidden="true">14.5.</strong> 载入着色器</a></li><li class="chapter-item expanded "><a href="59-创建着色器模块.html"><strong aria-hidden="true">14.6.</strong> 创建着色器模块</a></li><li class="chapter-item expanded "><a href="60-创建着色器阶段.html"><strong aria-hidden="true">14.7.</strong> 创建着色器阶段</a></li></ol></li><li class="chapter-item expanded "><a href="61-固定功能.html"><strong aria-hidden="true">15.</strong> 固定功能</a></li><li><ol class="section"><li class="chapter-item expanded "><a href="62-顶点输入.html"><strong aria-hidden="true">15.1.</strong> 顶点输入</a></li><li class="chapter-item expanded "><a href="63-输入装配.html"><strong aria-hidden="true">15.2.</strong> 输入装配</a></li><li class="chapter-item expanded "><a href="64-视口和裁剪.html"><strong aria-hidden="true">15.3.</strong> 视口和裁剪</a></li><li class="chapter-item expanded "><a href="65-光栅化.html"><strong aria-hidden="true">15.4.</strong> 光栅化</a></li><li class="chapter-item expanded "><a href="66-多重采样.html"><strong aria-hidden="true">15.5.</strong> 多重采样</a></li><li class="chapter-item expanded "><a href="67-深度和模板测试.html"><strong aria-hidden="true">15.6.</strong> 深度和模板测试</a></li><li class="chapter-item expanded "><a href="68-颜色混合.html"><strong aria-hidden="true">15.7.</strong> 颜色混合</a></li><li class="chapter-item expanded "><a href="69-动态状态.html"><strong aria-hidden="true">15.8.</strong> 动态状态</a></li><li class="chapter-item expanded "><a href="70-管线布局.html"><strong aria-hidden="true">15.9.</strong> 管线布局</a></li><li class="chapter-item expanded "><a href="71-总结.html"><strong aria-hidden="true">15.10.</strong> 总结</a></li></ol></li><li class="chapter-item expanded "><a href="72-渲染流程.html"><strong aria-hidden="true">16.</strong> 渲染流程</a></li><li><ol class="section"><li class="chapter-item expanded "><a href="73-配置.html"><strong aria-hidden="true">16.1.</strong> 配置</a></li><li class="chapter-item expanded "><a href="74-附着描述.html"><strong aria-hidden="true">16.2.</strong> 附着描述</a></li><li class="chapter-item expanded "><a href="75-子流程和附着引用.html"><strong aria-hidden="true">16.3.</strong> 子流程和附着引用</a></li><li class="chapter-item expanded "><a href="76-渲染流程.html"><strong aria-hidden="true">16.4.</strong> 渲染流程</a></li></ol></li><li class="chapter-item expanded "><a href="77-阶段总结.html"><strong aria-hidden="true">17.</strong> 阶段总结</a></li><li class="chapter-item expanded "><a href="78-帧缓冲.html"><strong aria-hidden="true">18.</strong> 帧缓冲</a></li><li class="chapter-item expanded "><a href="79-指令缓冲.html"><strong aria-hidden="true">19.</strong> 指令缓冲</a></li><li><ol class="section"><li class="chapter-item expanded "><a href="80-指令池.html"><strong aria-hidden="true">19.1.</strong> 指令池</a></li><li class="chapter-item expanded "><a href="81-分配指令缓冲.html"><strong aria-hidden="true">19.2.</strong> 分配指令缓冲</a></li><li class="chapter-item expanded "><a href="82-记录指令到指令缓冲.html"><strong aria-hidden="true">19.3.</strong> 记录指令到指令缓冲</a></li><li class="chapter-item expanded "><a href="83-开始渲染流程.html"><strong aria-hidden="true">19.4.</strong> 开始渲染流程</a></li><li class="chapter-item expanded "><a href="84-基础绘制指令.html"><strong aria-hidden="true">19.5.</strong> 基础绘制指令</a></li><li class="chapter-item expanded "><a href="85-结束渲染流程.html"><strong aria-hidden="true">19.6.</strong> 结束渲染流程</a></li></ol></li><li class="chapter-item expanded "><a href="86-渲染和呈现.html"><strong aria-hidden="true">20.</strong> 渲染和呈现</a></li><li><ol class="section"><li class="chapter-item expanded "><a href="87-配置.html"><strong aria-hidden="true">20.1.</strong> 配置</a></li><li class="chapter-item expanded "><a href="88-同步.html"><strong aria-hidden="true">20.2.</strong> 同步</a></li><li class="chapter-item expanded "><a href="89-信号量.html"><strong aria-hidden="true">20.3.</strong> 信号量</a></li><li class="chapter-item expanded "><a href="90-从交换链获取图像.html"><strong aria-hidden="true">20.4.</strong> 从交换链获取图像</a></li><li class="chapter-item expanded "><a href="91-提交指令缓冲.html"><strong aria-hidden="true">20.5.</strong> 提交指令缓冲</a></li><li class="chapter-item expanded "><a href="92-子流程依赖.html"><strong aria-hidden="true">20.6.</strong> 子流程依赖</a></li><li class="chapter-item expanded "><a href="93-呈现.html"><strong aria-hidden="true">20.7.</strong> 呈现</a></li><li class="chapter-item expanded "><a href="94-多帧并行渲染.html"><strong aria-hidden="true">20.8.</strong> 多帧并行渲染</a></li><li class="chapter-item expanded "><a href="95-总结.html"><strong aria-hidden="true">20.9.</strong> 总结</a></li></ol></li><li class="chapter-item expanded "><a href="96-重建交换链.html"><strong aria-hidden="true">21.</strong> 重建交换链</a></li><li><ol class="section"><li class="chapter-item expanded "><a href="97-介绍.html"><strong aria-hidden="true">21.1.</strong> 介绍</a></li><li class="chapter-item expanded "><a href="98-重建交换链.html"><strong aria-hidden="true">21.2.</strong> 重建交换链</a></li><li class="chapter-item expanded "><a href="99-交换链不完全匹配和交换链过期.html"><strong aria-hidden="true">21.3.</strong> 交换链不完全匹配和交换链过期</a></li><li class="chapter-item expanded "><a href="100-显式处理窗口大小改变.html"><strong aria-hidden="true">21.4.</strong> 显式处理窗口大小改变</a></li><li class="chapter-item expanded "><a href="101-处理窗口最小化.html"><strong aria-hidden="true">21.5.</strong> 处理窗口最小化</a></li></ol></li><li class="chapter-item expanded "><a href="102-顶点输入描述.html"><strong aria-hidden="true">22.</strong> 顶点输入描述</a></li><li><ol class="section"><li class="chapter-item expanded "><a href="103-介绍.html"><strong aria-hidden="true">22.1.</strong> 介绍</a></li><li class="chapter-item expanded "><a href="104-顶点着色器.html"><strong aria-hidden="true">22.2.</strong> 顶点着色器</a></li><li class="chapter-item expanded "><a href="105-顶点数据.html"><strong aria-hidden="true">22.3.</strong> 顶点数据</a></li><li class="chapter-item expanded "><a href="106-绑定描述.html"><strong aria-hidden="true">22.4.</strong> 绑定描述</a></li></ol></li><li class="chapter-item expanded "><a href="107-创建顶点缓冲.html"><strong aria-hidden="true">23.</strong> 创建顶点缓冲</a></li><li><ol class="section"><li class="chapter-item expanded "><a href="108-介绍.html"><strong aria-hidden="true">23.1.</strong> 介绍</a></li><li class="chapter-item expanded "><a href="109-创建缓冲.html"><strong aria-hidden="true">23.2.</strong> 创建缓冲</a></li><li class="chapter-item expanded "><a href="110-内存需求.html"><strong aria-hidden="true">23.3.</strong> 内存需求</a></li><li class="chapter-item expanded "><a href="111-内存分配.html"><strong aria-hidden="true">23.4.</strong> 内存分配</a></li><li class="chapter-item expanded "><a href="112-填充顶点缓冲.html"><strong aria-hidden="true">23.5.</strong> 填充顶点缓冲</a></li><li class="chapter-item expanded "><a href="113-绑定顶点缓冲.html"><strong aria-hidden="true">23.6.</strong> 绑定顶点缓冲</a></li></ol></li><li class="chapter-item expanded "><a href="114-暂存缓冲.html"><strong aria-hidden="true">24.</strong> 暂存缓冲</a></li><li><ol class="section"><li class="chapter-item expanded "><a href="115-介绍.html"><strong aria-hidden="true">24.1.</strong> 介绍</a></li><li class="chapter-item expanded "><a href="116-传输队列.html"><strong aria-hidden="true">24.2.</strong> 传输队列</a></li><li class="chapter-item expanded "><a href="117-创建缓冲的辅助函数.html"><strong aria-hidden="true">24.3.</strong> 创建缓冲的辅助函数</a></li><li class="chapter-item expanded "><a href="118-使用暂存缓冲.html"><strong aria-hidden="true">24.4.</strong> 使用暂存缓冲</a></li><li class="chapter-item expanded "><a href="119-总结.html"><strong aria-hidden="true">24.5.</strong> 总结</a></li></ol></li><li class="chapter-item expanded "><a href="120-索引缓冲.html"><strong aria-hidden="true">25.</strong> 索引缓冲</a></li><li><ol class="section"><li class="chapter-item expanded "><a href="121-介绍.html"><strong aria-hidden="true">25.1.</strong> 介绍</a></li><li class="chapter-item expanded "><a href="122-创建索引缓冲.html"><strong aria-hidden="true">25.2.</strong> 创建索引缓冲</a></li><li class="chapter-item expanded "><a href="123-使用索引缓冲.html"><strong aria-hidden="true">25.3.</strong> 使用索引缓冲</a></li></ol></li><li class="chapter-item expanded "><a href="124-描述符布局和缓冲.html"><strong aria-hidden="true">26.</strong> 描述符布局和缓冲</a></li><li><ol class="section"><li class="chapter-item expanded "><a href="125-介绍.html"><strong aria-hidden="true">26.1.</strong> 介绍</a></li><li class="chapter-item expanded "><a href="126-顶点着色器.html"><strong aria-hidden="true">26.2.</strong> 顶点着色器</a></li><li class="chapter-item expanded "><a href="127-描述符集布局.html"><strong aria-hidden="true">26.3.</strong> 描述符集布局</a></li><li class="chapter-item expanded "><a href="128-uniform缓冲.html"><strong aria-hidden="true">26.4.</strong> uniform缓冲</a></li><li class="chapter-item expanded "><a href="129-更新uniform数据.html"><strong aria-hidden="true">26.5.</strong> 更新uniform数据</a></li></ol></li><li class="chapter-item expanded "><a href="130-描述符池和描述符集.html"><strong aria-hidden="true">27.</strong> 描述符池和描述符集</a></li><li><ol class="section"><li class="chapter-item expanded "><a href="131-介绍.html"><strong aria-hidden="true">27.1.</strong> 介绍</a></li><li class="chapter-item expanded "><a href="132-描述符池.html"><strong aria-hidden="true">27.2.</strong> 描述符池</a></li><li class="chapter-item expanded "><a href="133-描述符集.html"><strong aria-hidden="true">27.3.</strong> 描述符集</a></li><li class="chapter-item expanded "><a href="134-使用描述符集.html"><strong aria-hidden="true">27.4.</strong> 使用描述符集</a></li><li class="chapter-item expanded "><a href="135-多个描述符集.html"><strong aria-hidden="true">27.5.</strong> 多个描述符集</a></li></ol></li><li class="chapter-item expanded "><a href="136-图像.html"><strong aria-hidden="true">28.</strong> 图像</a></li><li><ol class="section"><li class="chapter-item expanded "><a href="137-介绍.html"><strong aria-hidden="true">28.1.</strong> 介绍</a></li><li class="chapter-item expanded "><a href="138-图像库.html"><strong aria-hidden="true">28.2.</strong> 图像库</a></li><li class="chapter-item expanded "><a href="139-载入图像.html"><strong aria-hidden="true">28.3.</strong> 载入图像</a></li><li class="chapter-item expanded "><a href="140-暂存缓冲.html"><strong aria-hidden="true">28.4.</strong> 暂存缓冲</a></li><li class="chapter-item expanded "><a href="141-纹理图像.html"><strong aria-hidden="true">28.5.</strong> 纹理图像</a></li><li class="chapter-item expanded "><a href="142-布局变换.html"><strong aria-hidden="true">28.6.</strong> 布局变换</a></li><li class="chapter-item expanded "><a href="143-复制缓冲到图像.html"><strong aria-hidden="true">28.7.</strong> 复制缓冲到图像</a></li><li class="chapter-item expanded "><a href="144-准备纹理图像.html"><strong aria-hidden="true">28.8.</strong> 准备纹理图像</a></li><li class="chapter-item expanded "><a href="145-变换屏障掩码.html"><strong aria-hidden="true">28.9.</strong> 变换屏障掩码</a></li><li class="chapter-item expanded "><a href="146-清理.html"><strong aria-hidden="true">28.10.</strong> 清理</a></li></ol></li><li class="chapter-item expanded "><a href="147-图像视图和采样器.html"><strong aria-hidden="true">29.</strong> 图像视图和采样器</a></li><li><ol class="section"><li class="chapter-item expanded "><a href="148-纹理图像视图.html"><strong aria-hidden="true">29.1.</strong> 纹理图像视图</a></li><li class="chapter-item expanded "><a href="149-采样器.html"><strong aria-hidden="true">29.2.</strong> 采样器</a></li><li class="chapter-item expanded "><a href="150-各向异性设备特性.html"><strong aria-hidden="true">29.3.</strong> 各向异性设备特性</a></li></ol></li><li class="chapter-item expanded "><a href="151-组合图像采样器.html"><strong aria-hidden="true">30.</strong> 组合图像采样器</a></li><li><ol class="section"><li class="chapter-item expanded "><a href="152-介绍.html"><strong aria-hidden="true">30.1.</strong> 介绍</a></li><li class="chapter-item expanded "><a href="153-更新描述符.html"><strong aria-hidden="true">30.2.</strong> 更新描述符</a></li><li class="chapter-item expanded "><a href="154-纹理坐标.html"><strong aria-hidden="true">30.3.</strong> 纹理坐标</a></li><li class="chapter-item expanded "><a href="155-着色器.html"><strong aria-hidden="true">30.4.</strong> 着色器</a></li></ol></li><li class="chapter-item expanded "><a href="156-深度缓冲.html"><strong aria-hidden="true">31.</strong> 深度缓冲</a></li><li><ol class="section"><li class="chapter-item expanded "><a href="157-介绍.html"><strong aria-hidden="true">31.1.</strong> 介绍</a></li><li class="chapter-item expanded "><a href="158-三维几何.html"><strong aria-hidden="true">31.2.</strong> 三维几何</a></li><li class="chapter-item expanded "><a href="159-深度图像和视图.html"><strong aria-hidden="true">31.3.</strong> 深度图像和视图</a></li><li class="chapter-item expanded "><a href="160-渲染流程.html"><strong aria-hidden="true">31.4.</strong> 渲染流程</a></li><li class="chapter-item expanded "><a href="161-帧缓冲.html"><strong aria-hidden="true">31.5.</strong> 帧缓冲</a></li><li class="chapter-item expanded "><a href="162-清除值.html"><strong aria-hidden="true">31.6.</strong> 清除值</a></li><li class="chapter-item expanded "><a href="163-深度和模板状态.html"><strong aria-hidden="true">31.7.</strong> 深度和模板状态</a></li><li class="chapter-item expanded "><a href="164-处理窗口大小变化.html"><strong aria-hidden="true">31.8.</strong> 处理窗口大小变化</a></li></ol></li><li class="chapter-item expanded "><a href="165-载入模型.html"><strong aria-hidden="true">32.</strong> 载入模型</a></li><li><ol class="section"><li class="chapter-item expanded "><a href="166-介绍.html"><strong aria-hidden="true">32.1.</strong> 介绍</a></li><li class="chapter-item expanded "><a href="167-库.html"><strong aria-hidden="true">32.2.</strong> 库</a></li><li class="chapter-item expanded "><a href="168-网格样例.html"><strong aria-hidden="true">32.3.</strong> 网格样例</a></li><li class="chapter-item expanded "><a href="169-载入顶点和索引.html"><strong aria-hidden="true">32.4.</strong> 载入顶点和索引</a></li><li class="chapter-item expanded "><a href="170-顶点去重.html"><strong aria-hidden="true">32.5.</strong> 顶点去重</a></li></ol></li><li class="chapter-item expanded "><a href="171-生成细化贴图.html"><strong aria-hidden="true">33.</strong> 生成细化贴图</a></li><li><ol class="section"><li class="chapter-item expanded "><a href="172-介绍.html"><strong aria-hidden="true">33.1.</strong> 介绍</a></li><li class="chapter-item expanded "><a href="173-创建图像.html" class="active"><strong aria-hidden="true">33.2.</strong> 创建图像</a></li><li class="chapter-item expanded "><a href="174-生成细化贴图.html"><strong aria-hidden="true">33.3.</strong> 生成细化贴图</a></li><li class="chapter-item expanded "><a href="175-线性过滤支持.html"><strong aria-hidden="true">33.4.</strong> 线性过滤支持</a></li><li class="chapter-item expanded "><a href="176-采样器.html"><strong aria-hidden="true">33.5.</strong> 采样器</a></li><li class="chapter-item expanded "><a href="177-总结.html"><strong aria-hidden="true">33.6.</strong> 总结</a></li></ol></li><li class="chapter-item expanded "><a href="178-多重采样.html"><strong aria-hidden="true">34.</strong> 多重采样</a></li><li><ol class="section"><li class="chapter-item expanded "><a href="179-介绍.html"><strong aria-hidden="true">34.1.</strong> 介绍</a></li><li class="chapter-item expanded "><a href="180-获取可用样本数.html"><strong aria-hidden="true">34.2.</strong> 获取可用样本数</a></li><li class="chapter-item expanded "><a href="181-设置渲染目标.html"><strong aria-hidden="true">34.3.</strong> 设置渲染目标</a></li><li class="chapter-item expanded "><a href="182-添加附着.html"><strong aria-hidden="true">34.4.</strong> 添加附着</a></li><li class="chapter-item expanded "><a href="183-提升质量.html"><strong aria-hidden="true">34.5.</strong> 提升质量</a></li><li class="chapter-item expanded "><a href="184-总结.html"><strong aria-hidden="true">34.6.</strong> 总结</a></li></ol></li><li class="chapter-item expanded "><a href="185-FAQ.html"><strong aria-hidden="true">35.</strong> FAQ</a></li></ol>
+            </div>
+            <div id="sidebar-resize-handle" class="sidebar-resize-handle"></div>
+        </nav>
+
+        <div id="page-wrapper" class="page-wrapper">
+
+            <div class="page">
+                                <div id="menu-bar-hover-placeholder"></div>
+                <div id="menu-bar" class="menu-bar sticky bordered">
+                    <div class="left-buttons">
+                        <button id="sidebar-toggle" class="icon-button" type="button" title="Toggle Table of Contents" aria-label="Toggle Table of Contents" aria-controls="sidebar">
+                            <i class="fa fa-bars"></i>
+                        </button>
+                        <button id="theme-toggle" class="icon-button" type="button" title="Change theme" aria-label="Change theme" aria-haspopup="true" aria-expanded="false" aria-controls="theme-list">
+                            <i class="fa fa-paint-brush"></i>
+                        </button>
+                        <ul id="theme-list" class="theme-popup" aria-label="Themes" role="menu">
+                            <li role="none"><button role="menuitem" class="theme" id="light">Light</button></li>
+                            <li role="none"><button role="menuitem" class="theme" id="rust">Rust</button></li>
+                            <li role="none"><button role="menuitem" class="theme" id="coal">Coal</button></li>
+                            <li role="none"><button role="menuitem" class="theme" id="navy">Navy</button></li>
+                            <li role="none"><button role="menuitem" class="theme" id="ayu">Ayu</button></li>
+                        </ul>
+                        <button id="search-toggle" class="icon-button" type="button" title="Search. (Shortkey: s)" aria-label="Toggle Searchbar" aria-expanded="false" aria-keyshortcuts="S" aria-controls="searchbar">
+                            <i class="fa fa-search"></i>
+                        </button>
+                    </div>
+
+                    <h1 class="menu-title">Vulkan编程指南</h1>
+
+                    <div class="right-buttons">
+                        <a href="print.html" title="Print this book" aria-label="Print this book">
+                            <i id="print-button" class="fa fa-print"></i>
+                        </a>
+
+                    </div>
+                </div>
+
+                <div id="search-wrapper" class="hidden">
+                    <form id="searchbar-outer" class="searchbar-outer">
+                        <input type="search" id="searchbar" name="searchbar" placeholder="Search this book ..." aria-controls="searchresults-outer" aria-describedby="searchresults-header">
+                    </form>
+                    <div id="searchresults-outer" class="searchresults-outer hidden">
+                        <div id="searchresults-header" class="searchresults-header"></div>
+                        <ul id="searchresults">
+                        </ul>
+                    </div>
+                </div>
+
+                <!-- Apply ARIA attributes after the sidebar and the sidebar toggle button are added to the DOM -->
+                <script>
+                    document.getElementById('sidebar-toggle').setAttribute('aria-expanded', sidebar === 'visible');
+                    document.getElementById('sidebar').setAttribute('aria-hidden', sidebar !== 'visible');
+                    Array.from(document.querySelectorAll('#sidebar a')).forEach(function(link) {
+                        link.setAttribute('tabIndex', sidebar === 'visible' ? 0 : -1);
+                    });
+                </script>
+
+                <div id="content" class="content">
+                    <main>
+                        <h2 id="创建图像"><a class="header" href="#创建图像">创建图像</a></h2>
+<p>对于Vulkan来说，一组细化贴图的每一张图像需要使用不同的细化级别设置存储在VkImage对象中。细化级别设置为0的VkImage对象存储的是源图像，细化级别设置大于0的VkImage对象会被细化链引用使用。</p>
+<p>细化级别是在创建VkImage对象时设置的，之前，我们一直将其设置为1。现在我们根据图像的尺寸来计算它。添加一个类成员变量来存储计算出的细化级别个数：</p>
+<pre><code class="language-cpp">...
+uint32_t mipLevels;
+VkImage textureImage;
+        ...
+</code></pre>
+<p>mipLevels成员变量的值可以在createTextureImage函数载入纹理图像时计算得到：</p>
+<pre><code class="language-cpp">int texWidth, texHeight, texChannels;
+stbi_uc* pixels = stbi_load(TEXTURE_PATH.c_str(), &amp;texWidth, &amp;texHeight, &amp;texChannels, STBI_rgb_alpha);
+        ...
+mipLevels = static_cast&lt;uint32_t&gt;(std::floor(std::log2(std::max(texWidth, texHeight)))) + 1;
+</code></pre>
+<p><img src="img/f32-1.jpg" alt="image" /></p>
+<p>上面代码我们通过max函数来选择纹理尺寸中较大的那个，然后对其对以2为底的对数，并将结果向下取整后+1得到细化级别的个数，也就是mipLevels的值。</p>
+<p>我们需要对createImage、createImageView和transitionImageLayout函数进行修改为它们添加mipLevels参数：</p>
+<pre><code class="language-cpp">void createImage(uint32_t width, uint32_t height, uint32_t mipLevels, VkFormat format, VkImageTiling tiling, VkImageUsageFlags usage, VkMemoryPropertyFlags properties, VkImage&amp; image, VkDeviceMemory&amp; imageMemory) {
+        ...
+    imageInfo.mipLevels = mipLevels;
+        ...
+}
+</code></pre>
+<pre><code class="language-cpp">VkImageView createImageView(VkImage image, VkFormat format, VkImageAspectFlags aspectFlags, uint32_t mipLevels) {
+        ...
+    viewInfo.subresourceRange.levelCount = mipLevels;
+        ...
+</code></pre>
+<pre><code class="language-cpp">void transitionImageLayout(VkImage image, VkFormat format,
+VkImageLayout oldLayout, VkImageLayout newLayout, uint32_t mipLevels) {
+        ...
+    barrier.subresourceRange.levelCount = mipLevels;
+        ...
+</code></pre>
+<p>更新对它们进行的调用，确保使用正确的参数进行调用：</p>
+<pre><code class="language-cpp">createImage(swapChainExtent.width, swapChainExtent.height, 1,  depthFormat, VK_IMAGE_TILING_OPTIMAL, VK_IMAGE_USAGE_DEPTH_STENCIL_ATTACHMENT_BIT, VK_MEMORY_PROPERTY_DEVICE_LOCAL_BIT, depthImage, depthImageMemory);
+        ...
+createImage(texWidth, texHeight, mipLevels, VK_FORMAT_R8G8B8A8_UNORM, VK_IMAGE_TILING_OPTIMAL, VK_IMAGE_USAGE_TRANSFER_DST_BIT | VK_IMAGE_USAGE_SAMPLED_BIT, VK_MEMORY_PROPERTY_DEVICE_LOCAL_BIT, textureImage, textureImageMemory);
+</code></pre>
+<pre><code class="language-cpp">swapChainImageViews[i] = createImageView(swapChainImages[i], swapChainImageFormat, VK_IMAGE_ASPECT_COLOR_BIT, 1);
+        ...
+depthImageView = createImageView(depthImage, depthFormat, VK_IMAGE_ASPECT_DEPTH_BIT, 1);
+        ...
+textureImageView = createImageView(textureImage, VK_FORMAT_R8G8B8A8_UNORM, VK_IMAGE_ASPECT_COLOR_BIT, mipLevels);
+</code></pre>
+<pre><code class="language-cpp">transitionImageLayout(depthImage, depthFormat, VK_IMAGE_LAYOUT_UNDEFINED,
+VK_IMAGE_LAYOUT_DEPTH_STENCIL_ATTACHMENT_OPTIMAL, 1);
+        ...
+    transitionImageLayout(textureImage, VK_FORMAT_R8G8B8A8_UNORM, VK_IMAGE_LAYOUT_UNDEFINED, VK_IMAGE_LAYOUT_TRANSFER_DST_OPTIMAL, mipLevels);
+</code></pre>
+
+                    </main>
+
+                    <nav class="nav-wrapper" aria-label="Page navigation">
+                        <!-- Mobile navigation buttons -->
+                            <a rel="prev" href="172-介绍.html" class="mobile-nav-chapters previous" title="Previous chapter" aria-label="Previous chapter" aria-keyshortcuts="Left">
+                                <i class="fa fa-angle-left"></i>
+                            </a>
+
+                            <a rel="next" href="174-生成细化贴图.html" class="mobile-nav-chapters next" title="Next chapter" aria-label="Next chapter" aria-keyshortcuts="Right">
+                                <i class="fa fa-angle-right"></i>
+                            </a>
+
+                        <div style="clear: both"></div>
+                    </nav>
+                </div>
+            </div>
+
+            <nav class="nav-wide-wrapper" aria-label="Page navigation">
+                    <a rel="prev" href="172-介绍.html" class="nav-chapters previous" title="Previous chapter" aria-label="Previous chapter" aria-keyshortcuts="Left">
+                        <i class="fa fa-angle-left"></i>
+                    </a>
+
+                    <a rel="next" href="174-生成细化贴图.html" class="nav-chapters next" title="Next chapter" aria-label="Next chapter" aria-keyshortcuts="Right">
+                        <i class="fa fa-angle-right"></i>
+                    </a>
+            </nav>
+
+        </div>
+
+
+
+
+        <script>
+            window.playground_copyable = true;
+        </script>
+
+
+        <script src="elasticlunr.min.js"></script>
+        <script src="mark.min.js"></script>
+        <script src="searcher.js"></script>
+
+        <script src="clipboard.min.js"></script>
+        <script src="highlight.js"></script>
+        <script src="book.js"></script>
+
+        <!-- Custom JS scripts -->
+
+
+    </div>
+    </body>
+</html>
